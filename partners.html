@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meet Our Partners</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    #search {
+      display: block;
+      margin: 20px auto;
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .partners {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .partner-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .partner-card:hover {
+      transform: scale(1.05);
+    }
+
+    .partner-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .partner-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .partner-role {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .bottom-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .bottom-button button {
+      background-color: #0078D4;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .bottom-button button:hover {
+      background-color: #005A9E;
+    }
+
+    button a{
+      text-decoration: none;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Meet Our Partners</h1>
+  <input type="text" id="search" placeholder="Search by name" />
+
+  <div id="partners-container" class="partners"></div>
+
+  <div class="bottom-button">
+    <button onclick="handleButtonClick()"><a href="index.html">HOME</a></button>
+  </div>
+
+  <script>
+    const partners = [
+      { name: "Mpobi Randy", role: "", image: "IMAGES/Randy.jpg" },
+      { name: "Alex Adwere David", role: "", image: "IMAGES/Alex.jpg" },
+      { name: "Boakye Dankwa", role: "", image: "IMAGES/Boakye.jpg" },
+      { name: "Tahiru Fauzia", role: "", image: "IMAGES/Fauzia.jpg" },
+      { name: "Gyan Armstrong", role: "", image: "IMAGES/Armstrong.jpg" },
+      { name: "Nyarko Sylvia", role: "", image: "IMAGES/Sylvia.jpg" },
+      { name: "Mariola Kyere", role: "", image: "IMAGES/Mariola.jpg" },
+      { name: "Amponsah Japhlet", role: "", image: "IMAGES/Japhlet.jpg" },
+      { name: "Nafisatu Ibrahim", role: "", image: "IMAGES/Nafisatu.jpg" },
+      { name: "Osei Roselyn Nyamekye", role: "", image: "IMAGES/Roselyn.jpg" },
+      { name: "Amo Owusuwaa Erica", role: "", image: "IMAGES/Erica.jpg" },
+    ];
+
+    const container = document.getElementById("partners-container");
+    const searchInput = document.getElementById("search");
+
+    function displayPartners(data) {
+      container.innerHTML = "";
+      data.forEach(p => {
+        container.innerHTML += `
+          <div class="partner-card">
+            <img src="${p.image}" alt="${p.name}">
+            <div class="partner-name">${p.name}</div>
+            <div class="partner-role">${p.role}</div>
+          </div>
+        `;
+      });
+    }
+
+    searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase();
+      const filtered = partners.filter(p =>
+        p.name.toLowerCase().includes(value) || p.role.toLowerCase().includes(value)
+      );
+      displayPartners(filtered);
+    });
+
+   
+
+    displayPartners(partners);
+  </script>
+
+</body>
+</html>
